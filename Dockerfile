@@ -1,7 +1,8 @@
-FROM openjdk:17.0.1-jdk-slim
+FROM amazoncorretto:11
 
 EXPOSE 8080
 
-ADD target/crud-spring-0.0.1-SNAPSHOT.jar crud-spring.jar
+ARG JAR_FILE=target/*SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
 
 ENTRYPOINT [ "java", "-jar", "/crud-spring.jar" ]
